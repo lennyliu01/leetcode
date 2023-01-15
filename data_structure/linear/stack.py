@@ -37,3 +37,23 @@ class Stack():
     def size(self):
         '''size() returns the number of items on the stack. It needs no parameters and returns an integer.'''
         return self.s
+
+    
+    def delete(self):
+        '''Remove the stack from the momery, It needs no parameters and no returns '''
+        del self.items
+    
+    
+    def clear_stack(self):
+        '''empty the stack, It needs no parameters and no returns '''
+        self.items = []
+
+
+    def get(self,val):
+        i = 0
+        for item in self.items:
+            if item == val:
+                return i
+            else:
+                i += 1
+        return f'{val} not found in the stack'
