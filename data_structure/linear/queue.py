@@ -51,7 +51,7 @@ class Queue():
         self.items = []
 
 
-    def find(self,val):
+    def get(self,val):
         i = 0
         for item in self.items:
             if item == val:
