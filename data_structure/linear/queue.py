@@ -25,7 +25,7 @@ class Queue():
             return 'The queue is empty, no action taken'
         else:
             self.s -= 1
-            return self.items.pop(0)
+            return self.items.remove(0)
 
 
     def front(self):
@@ -39,3 +39,23 @@ class Queue():
     def size(self):
         '''size () returns the number of items on the queue. It needs no parameters and returns an integer. '''
         return self.s
+
+    
+    def delete(self):
+        '''Remove the queue from the momery, It needs no parameters and no returns '''
+        del self.items
+    
+    
+    def clear_queue(self):
+        '''empty the queue, It needs no parameters and no returns '''
+        self.items = []
+
+
+    def find(self,val):
+        i = 0
+        for item in self.items:
+            if item == val:
+                return i
+            else:
+                i += 1
+        return f'{val} not found in the queue'
