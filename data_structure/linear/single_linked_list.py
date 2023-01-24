@@ -38,6 +38,28 @@ class LinkedList:
                 p = p.next
         if i < index:
             print(f"index is out of bound, the list's max insert index is {i}, the insert postion is {index}")
+
+
+    def remove(self,index=None):
+        if type(index)!= int:
+            return "Error, the index has be an interge"
+        i = 0
+        p = self.head
+        if index == 0:
+            q = p.next
+            self.head = q
+            p.next = None
+            return
+        while p.next:
+            if i == index-1:
+                q = p.next
+                p.next = q.next
+                q.next = None
+                return 
+            else:
+                i += 1
+                p = p.next
+        print(f"Error, index {index} is out of range, the max index for this list is {i}")
     
 
     def get_by_index(self,index):
@@ -67,8 +89,6 @@ class LinkedList:
                     i += 1
         return (f'{data} is not found in the linked list')
 
-            
-
 
     def __repr__(self):
         dot = self.head
@@ -91,5 +111,7 @@ llist = LinkedList(['a','b','c'])
 print(llist)
 llist.insert(0,'1')
 print(llist)
-print(llist.get_by_index(5))
-print(llist.get_by_value('1'))
+# print(llist.get_by_index(1))
+# print(llist.get_by_value('1'))
+llist.remove(2)
+print(llist)
