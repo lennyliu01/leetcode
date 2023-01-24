@@ -2,6 +2,8 @@ class Node:
     def __init__(self,data):
         self.data = data
         self.next = None
+    
+    
     def __repr__(self):
         return self.data
 
@@ -16,6 +18,7 @@ class LinkedList:
                 p.next = Node(data=node)
                 p = p.next
 
+    
     def insert(self, index, data):
         if type(index)!= int:
             return "Error, the index has be an interge"
@@ -31,13 +34,42 @@ class LinkedList:
                     node.next = p.next
                     p.next = node
                     return
-                #print(f"index is out of bound, the list's max index is {i}, the insert postion is {index}")
                 i += 1
                 p = p.next
         if i < index:
             print(f"index is out of bound, the list's max insert index is {i}, the insert postion is {index}")
-                
-        #print(f"index is out of bound, the list's max index is {i-1}, the insert postion is {index}")
+    
+
+    def get_by_index(self,index):
+        if type(index) != int or index <0:
+            print("index has be to an positive interge, existing")
+        else:
+            p = self.head
+            i = 0
+            while p:
+                if i == index:
+                    return p
+                else:
+                    i += 1
+                    p = p.next
+            return(f'The index {index} is out of range, the max index for this list is {i-1}')
+            #return -1
+
+    def get_by_value(self,data):
+        if data:
+            p = self.head
+            i = 0
+            while p:
+                if p.data == data:
+                    return i
+                else:
+                    p = p.next
+                    i += 1
+        return (f'{data} is not found in the linked list')
+
+            
+
+
     def __repr__(self):
         dot = self.head
         dots = []
@@ -45,6 +77,8 @@ class LinkedList:
             dots.append(dot.data)
             dot = dot.next
         return ' -> '.join(dots)
+
+
 
 llist = LinkedList(['a','b','c'])
 # first_node = Node('a')
@@ -57,3 +91,5 @@ llist = LinkedList(['a','b','c'])
 print(llist)
 llist.insert(0,'1')
 print(llist)
+print(llist.get_by_index(5))
+print(llist.get_by_value('1'))
