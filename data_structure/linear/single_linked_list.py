@@ -7,8 +7,14 @@ class Node:
 
 
 class LinkedList:
-    def __init__(self):
+    def __init__(self,nodes=None):
         self.head = None
+        if nodes:
+            self.head = Node(nodes.pop(0))
+            p = self.head
+            for node in nodes:
+                p.next = Node(data=node)
+                p = p.next
 
     def insert(self, index, data):
         if type(index)!= int:
@@ -40,13 +46,14 @@ class LinkedList:
             dot = dot.next
         return ' -> '.join(dots)
 
-llist = LinkedList()
-first_node = Node('a')
-second_node = Node('b')
-third_node = Node('d')
-llist.head = first_node
-first_node.next = second_node
-second_node.next = third_node
+llist = LinkedList(['a','b','c'])
+# first_node = Node('a')
+# second_node = Node('b')
+# third_node = Node('c')
+# first_node.next = second_node
+# second_node.next = third_node
+# llist = LinkedList()
+# llist.head = first_node
 print(llist)
-llist.insert(2,'1')
+llist.insert(0,'1')
 print(llist)
