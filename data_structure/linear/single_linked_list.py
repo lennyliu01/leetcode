@@ -21,8 +21,8 @@ class LinkedList:
                 node.next = p
                 self.head = node
             else:
-                while p.next:
-                    if i == index-1:
+                while p:
+                    if i == index-1: #if index = 3, get the element at index 2
                         node.next = p.next
                         p.next = node
                         return 
