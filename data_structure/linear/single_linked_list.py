@@ -17,15 +17,19 @@ class LinkedList:
             node = Node(data)
             p = self.head
             i = 0
-            while p.next != None:
-                if i == index:
-                    node.next = p.next
-                    p.next = node
-                    break
-                else:
-                    i += 1
-                    p = p.next
-            print(f"index is out of bound, the list's max index is {i}, the insert postion is {index}")
+            if index == 0:
+                node.next = p
+                self.head = node
+            else:
+                while p.next:
+                    if i == index-1:
+                        node.next = p.next
+                        p.next = node
+                        return 
+                    else:
+                        i += 1
+                        p = p.next
+            #print(f"index is out of bound, the list's max index is {i-1}, the insert postion is {index}")
     def __repr__(self):
         dot = self.head
         dots = []
@@ -42,5 +46,5 @@ llist.head = first_node
 first_node.next = second_node
 second_node.next = third_node
 print(llist)
-llist.insert(4,'c')
+llist.insert(2,'c')
 print(llist)
