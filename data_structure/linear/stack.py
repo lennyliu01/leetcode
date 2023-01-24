@@ -18,13 +18,13 @@ class Stack():
     
     def push(self,item):
         '''push(item) adds anew item to the top of the stack.  It needs the item and returns nothing'''
-        self.items.append(item)
+        self.items.insert(0,item)
         self.s += 1
 
 
     def pop(self):
         '''pop() removes the top item from the stack. It needs no parameters and returns the item. The stack is modified.'''
-        item = self.items.pop()
+        item = self.items.pop(0)
         self.s -= 1
         return item
     
