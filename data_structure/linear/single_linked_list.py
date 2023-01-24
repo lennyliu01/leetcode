@@ -13,23 +13,25 @@ class LinkedList:
     def insert(self, index, data):
         if type(index)!= int:
             return "Error, the index has be an interge"
+        i = 0
+        node = Node(data)
+        p = self.head
+        if index == 0:
+            node.next = p
+            self.head = node
         else:
-            node = Node(data)
-            p = self.head
-            i = 0
-            if index == 0:
-                node.next = p
-                self.head = node
-            else:
-                while p:
-                    if i == index-1: #if index = 3, get the element at index 2
-                        node.next = p.next
-                        p.next = node
-                        return 
-                    else:
-                        i += 1
-                        p = p.next
-            #print(f"index is out of bound, the list's max index is {i-1}, the insert postion is {index}")
+            while p:
+                if i == index-1: #if index = 3, get the element at index 2
+                    node.next = p.next
+                    p.next = node
+                    return
+                #print(f"index is out of bound, the list's max index is {i}, the insert postion is {index}")
+                i += 1
+                p = p.next
+        if i < index:
+            print(f"index is out of bound, the list's max insert index is {i}, the insert postion is {index}")
+                
+        #print(f"index is out of bound, the list's max index is {i-1}, the insert postion is {index}")
     def __repr__(self):
         dot = self.head
         dots = []
@@ -46,5 +48,5 @@ llist.head = first_node
 first_node.next = second_node
 second_node.next = third_node
 print(llist)
-llist.insert(2,'c')
+llist.insert(2,'1')
 print(llist)
