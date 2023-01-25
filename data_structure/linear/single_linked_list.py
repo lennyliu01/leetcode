@@ -50,16 +50,18 @@ class LinkedList:
             self.head = q
             p.next = None
             return
-        while p.next:
-            if i == index-1:
-                q = p.next
-                p.next = q.next
-                q.next = None
-                return 
-            else:
-                i += 1
-                p = p.next
-        print(f"Error, index {index} is out of range, the max index for this list is {i}")
+        try:
+            while p:
+                if i == index-1:
+                    q = p.next
+                    p.next = q.next
+                    q.next = None
+                    return 
+                else:
+                    i += 1
+                    p = p.next
+        except:
+            print(f"Error, index {index} is out of range, the max index for this list is {i}")
     
 
     def get_by_index(self,index):
@@ -109,9 +111,9 @@ llist = LinkedList(['a','b','c'])
 # llist = LinkedList()
 # llist.head = first_node
 print(llist)
-llist.insert(0,'1')
+llist.insert(3,'1')
 print(llist)
 # print(llist.get_by_index(1))
 # print(llist.get_by_value('1'))
-llist.remove(2)
+llist.remove(3)
 print(llist)
