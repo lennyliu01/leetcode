@@ -50,16 +50,18 @@ class LinkedList:
             self.head = q
             p.next = None
             return
-        while p.next:
-            if i == index-1:
-                q = p.next
-                p.next = q.next
-                q.next = None
-                return 
-            else:
-                i += 1
-                p = p.next
-        print(f"Error, index {index} is out of range, the max index for this list is {i}")
+        try:
+            while p:
+                if i == index-1:
+                    q = p.next
+                    p.next = q.next
+                    q.next = None
+                    return 
+                else:
+                    i += 1
+                    p = p.next
+        except:
+            print(f"Error, index {index} is out of range, the max index for this list is {i}")
     
 
     def get_by_index(self,index):
@@ -88,6 +90,18 @@ class LinkedList:
                     p = p.next
                     i += 1
         return (f'{data} is not found in the linked list')
+    
+    def reverse(self):
+        if self.head == None:
+            return "The linked list is empty"
+        else:
+            perv, current = None, self.head
+            while current:
+                next_node = current.next
+                current.next = perv
+                perv = current
+                current = next_node
+            self.head = perv
 
 
     def __repr__(self):
@@ -100,7 +114,7 @@ class LinkedList:
 
 
 
-llist = LinkedList(['a','b','c'])
+llist = LinkedList(['a','b','c','d'])
 # first_node = Node('a')
 # second_node = Node('b')
 # third_node = Node('c')
@@ -108,10 +122,13 @@ llist = LinkedList(['a','b','c'])
 # second_node.next = third_node
 # llist = LinkedList()
 # llist.head = first_node
+# print(llist)
+llist.insert(4,'1')
+# print(llist)
+# # print(llist.get_by_index(1))
+# # print(llist.get_by_value('1'))
+# llist.remove(3)
+# print(llist)
 print(llist)
-llist.insert(0,'1')
-print(llist)
-# print(llist.get_by_index(1))
-# print(llist.get_by_value('1'))
-llist.remove(2)
+llist.reverse()
 print(llist)
