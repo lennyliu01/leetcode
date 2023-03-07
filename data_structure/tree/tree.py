@@ -39,3 +39,47 @@ print_tree(nodes)
 # 生成一个简单的树
 data_list = [(1, None), (2, 1), (3, 1), (4, 2), (5, 2), (6, 3), (7, 3)]
 nodes = build_tree(data_list)
+
+
+
+import unittest
+
+class TestTreeNode(unittest.TestCase):
+    def test_tree_node(self):
+        node = TreeNode(1)
+        self.assertEqual(node.data, 1)
+        self.assertIsNone(node.parent)
+        self.assertEqual(len(node.children), 0)
+
+    def test_add_child(self):
+        node1 = TreeNode(1)
+        node2 = TreeNode(2)
+        node1.add_child(node2)
+        self.assertEqual(len(node1.children), 1)
+        self.assertEqual(node1.children[0], node2)
+
+class TestBuildTree(unittest.TestCase):
+    def test_build_tree(self):
+        data_list = [
+            [1, None],
+            [2, 1],
+            [3, 1],
+            [4, 2],
+            [5, 2],
+            [6, 3],
+            [7, 3]
+        ]
+        root = build_tree(data_list)
+        self.assertEqual(root.data, 1)
+        self.assertEqual(len(root.children), 2)
+        self.assertEqual(root.children[0].data, 2)
+        self.assertEqual(root.children[1].data, 3)
+        self.assertEqual(len(root.children[0].children), 2)
+        self.assertEqual(root.children[0].children[0].data, 4)
+        self.assertEqual(root.children[0].children[1].data, 5)
+        self.assertEqual(len(root.children[1].children), 2)
+        self.assertEqual(root.children[1].children[0].data, 6)
+        self.assertEqual(root.children[1].children[1].data, 7)
+
+if __name__ == '__main__':
+    unittest.main()
