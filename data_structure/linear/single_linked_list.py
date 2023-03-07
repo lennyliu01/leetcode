@@ -1,3 +1,5 @@
+import unittest
+
 class Node:
     def __init__(self,data):
         self.data = data
@@ -123,12 +125,15 @@ llist = LinkedList(['a','b','c','d'])
 # llist = LinkedList()
 # llist.head = first_node
 # print(llist)
-llist.insert(4,'1')
+llist.insert(1,'1')
 # print(llist)
 # # print(llist.get_by_index(1))
 # # print(llist.get_by_value('1'))
 # llist.remove(3)
 # print(llist)
 print(llist)
-llist.reverse()
-print(llist)
+#llist.reverse()
+#print(llist)
+
+
+
