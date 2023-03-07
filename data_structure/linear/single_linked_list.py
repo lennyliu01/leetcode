@@ -1,3 +1,5 @@
+import unittest
+
 class Node:
     def __init__(self,data):
         self.data = data
@@ -21,7 +23,7 @@ class LinkedList:
     
     def insert(self, index, data):
         if type(index)!= int:
-            return "Error, the index has be an interge"
+            return "Error, the index has be an integer"
         i = 0
         node = Node(data)
         p = self.head
@@ -42,7 +44,7 @@ class LinkedList:
 
     def remove(self,index=None):
         if type(index)!= int:
-            return "Error, the index has be an interge"
+            return "Error, the index has be an integer"
         i = 0
         p = self.head
         if index == 0:
@@ -66,7 +68,7 @@ class LinkedList:
 
     def get_by_index(self,index):
         if type(index) != int or index <0:
-            print("index has be to an positive interge, existing")
+            print("index has be to an positive integer, existing")
         else:
             p = self.head
             i = 0
@@ -123,12 +125,15 @@ llist = LinkedList(['a','b','c','d'])
 # llist = LinkedList()
 # llist.head = first_node
 # print(llist)
-llist.insert(4,'1')
+llist.insert(1,'1')
 # print(llist)
 # # print(llist.get_by_index(1))
 # # print(llist.get_by_value('1'))
 # llist.remove(3)
 # print(llist)
 print(llist)
-llist.reverse()
-print(llist)
+#llist.reverse()
+#print(llist)
+
+
+
