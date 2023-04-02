@@ -15,17 +15,18 @@ def build_tree(data_list):
 
     for i, node in enumerate(nodes):
         if node.parent is None:
-            continue
-        parent_index = [n.data for n in nodes].index(node.parent)
-        parent = nodes[parent_index]
-        parent.add_child(node)
-        node.parent = parent
+            continue  #when contiune, skip the reset of the code in the blocks
+        else:
+            parent_index = [n.data for n in nodes].index(node.parent)
+            parent = nodes[parent_index]
+            parent.add_child(node)
+            node.parent = parent
 
     return nodes[0] if nodes else None
 
 # 生成一个简单的树
 data_list = [(1, None), (2, 1), (3, 1), (4, 2), (5, 2), (6, 3), (7, 3)]
-nodes = build_tree(data_list)
+my_tree = build_tree(data_list)
 
 # 打印树
 def print_tree(node, level=0):
@@ -34,13 +35,7 @@ def print_tree(node, level=0):
         for child in node.children:
             print_tree(child, level + 1)
 
-print_tree(nodes)
-
-# 生成一个简单的树
-data_list = [(1, None), (2, 1), (3, 1), (4, 2), (5, 2), (6, 3), (7, 3)]
-nodes = build_tree(data_list)
-
-
+print_tree(my_tree)
 
 import unittest
 
